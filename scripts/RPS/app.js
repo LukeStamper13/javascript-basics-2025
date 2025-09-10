@@ -7,20 +7,32 @@
 4. display results
 5. play again?
 */
+
 const ROCK = "rock";
 const PAPER = "paper";
 const SCISSORS = "scissors";
 
+/** @type { HTMLElement } */
+//@ts-ignore checking for null below
 let aftermathElement = document.getElementById("aftermath");
+if (aftermathElement == null) {
+    throw "aftermath is not defined! Check your HTML!!";
+}
 
 const pickWeapon = function (weapon) {
+    let aftermathText = `Player picked ${weapon}. `;
     console.log("Player picked: ", weapon);
 
     let computerWeapon = computerPickWeapon();
-
     console.log("Computer picked: ", computerWeapon);
+    aftermathText = aftermathText + `Computer picked ${computerWeapon}. `
 
-    return weapon;
+    // get results from decideResults()
+    let results = decideResults(weapon, computerWeapon);
+    console.log("Battle results: ", results);
+
+    if (results.isTie) {
+    }
 }
 
 const computerPickWeapon = function () {
@@ -92,4 +104,7 @@ function decideResults(player, computer) {
         result.description = "The Scissors doth cuteth the Paper";
         return result;
     }
+
+    result.description = "Don't know what happened!";
+    return result;
 }
