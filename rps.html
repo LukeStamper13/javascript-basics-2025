@@ -9,6 +9,33 @@
 
 		<!-- Link to the CSS file for styling -->
 		<link rel="stylesheet" href="css/style.css" />
+		<style>
+			body {
+				background-color: rgb(123, 121, 54);
+				color: chartreuse;
+				font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+			}
+
+			button {
+				background-color: rgb(29, 74, 94);
+				color: rgb(255, 0, 0);
+				padding: 5px;
+				box-shadow: 3px 3px 2px black;
+			}
+
+			.button-container {
+				border: 1px solid black;
+				margin: 20px;
+				padding: 10px;
+			}
+
+			.stats-block {
+				font-size: x-large;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		</style>
 	</head>
 	<body>
 		<h1>ROCK, PAPER, SCISSORS!!!!</h1>
@@ -17,11 +44,22 @@
 			<a href="index.html">Homepage</a>
 		</p>
 
-		<button onclick="pickWeapon(ROCK)">Rock</button>
-		<button onclick="pickWeapon(PAPER)">Paper</button>
-		<button onclick="pickWeapon(SCISSORS)">Scissors</button>
+		<div class="button-container">
+			<button onclick="pickWeapon(ROCK)">Rock</button>
+			<button onclick="pickWeapon(PAPER)">Paper</button>
+			<button onclick="pickWeapon(SCISSORS)">Scissors</button>
+		</div>
 
-		<div id="aftermath">Battle Results</div>
+		<h2>
+			<div id="aftermath">Battle Results</div>
+		</h2>
+		<div class="stats-block">
+			<div id="stats">Statistics</div>
+			<div id="playerWins">Player Wins</div>
+			<div id="computerWins">Computer Wins</div>
+			<div id="timesTied">Times Tied</div>
+			<div id="totalPlays">Total Plays</div>
+		</div>
 
 		<!-- Link to your JavaScript file -->
 		<script src="scripts/RPS/app.js"></script>
