@@ -17,6 +17,12 @@ let tieCount = 0;
 let playerScore = 0;
 let computerScore = 0;
 
+let percentagePlayer = 0.0;
+let percentageComputer = 0.0;
+let percentageTie = 0.0;
+
+const amtToPlay = 1000000;
+
 /** @type { HTMLElement } */
 //@ts-ignore checking for null below
 let aftermathElement = document.getElementById("aftermath");
@@ -86,6 +92,24 @@ const pickWeapon = function (weapon) {
     timesTiedElement.textContent = timesTiedText;
     let totalPlaysText = "You have played " + (timesPlayed.toString()) + " times.";
     totalPlaysElement.textContent = totalPlaysText;
+}
+
+const pickRandWeapon = function () {
+    const randNum = Math.floor(Math.random() * 3);
+    let weapon = "None";
+    if (randNum == 0) {
+        return ROCK;
+    }
+    else if (randNum == 1) {
+        return PAPER;
+    }
+    else if (randNum == 2) {
+        return SCISSORS;
+    }
+    else {
+        console.log("ERROR WEAPON NOT DEFINED!");
+        throw "Unknown Weapon";
+    }
 }
 
 const computerPickWeapon = function () {
@@ -161,3 +185,20 @@ function decideResults(player, computer) {
     result.description = "Don't know what happened!";
     return result;
 }
+
+while (timesPlayed < amtToPlay) {
+    pickWeapon(pickRandWeapon());
+}
+
+percentagePlayer = ((playerScore / amtToPlay) * 100);
+percentageComputer = ((computerScore / amtToPlay) * 100);
+percentageTie = ((tieCount / amtToPlay) * 100);
+
+percentagePlayer = parseFloat(percentagePlayer.toFixed(2));
+percentageComputer = parseFloat(percentageComputer.toFixed(2));
+percentageTie = parseFloat(percentageTie.toFixed(2));
+
+
+console.log("Percentage Player wins = %" + percentagePlayer);
+console.log("Percentage Computers wins = %" + percentageComputer);
+console.log("Percentage Ties = %" + percentageTie);
